@@ -1,0 +1,26 @@
+--- libidn-0.2.1/doc/libidn.texi.orig	2003-06-19 02:44:57.000000000 +0200
++++ libidn-0.2.1/doc/libidn.texi	2003-07-26 13:16:20.000000000 +0200
+@@ -30,19 +30,14 @@
+ @end quotation
+ @end copying
+ 
+-@dircategory GNU Libraries
++@dircategory Libraries:
+ @direntry
+-* libidn: (libidn).	Internationalized string processing library.
++* libidn: (libidn).			Internationalized string processing library
+ @end direntry
+ 
+-@dircategory GNU utilities
++@dircategory Miscellaneous:
+ @direntry
+-* idn: (libidn)Invoking idn.		Command line interface to GNU Libidn.
+-@end direntry
+-
+-@dircategory Emacs
+-@direntry
+-* IDN Library: (libidn)Emacs API.	Emacs API for IDN functions.
++* idn: (libidn)idn.			Command line interface to GNU Libidn
+ @end direntry
+ 
+ @titlepage
