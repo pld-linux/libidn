@@ -15,6 +15,7 @@ Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
 # Source0-md5:	cc87a7bdce60a6e229f0984ca551e273
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
+Patch2:		%{name}-DESTDIR.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1.8
@@ -107,6 +108,7 @@ domen).
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__gettextize}
@@ -172,7 +174,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with java}
 %files -n java-libidn
 %defattr(644,root,root,755)
-%{_datadir}/java/libidn.jar
+%{_datadir}/java/libidn*.jar
 %endif
 
 %files -n python-idn
