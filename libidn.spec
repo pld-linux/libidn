@@ -8,7 +8,7 @@ Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
 Version:	0.5.2
-Release:	1
+Release:	2
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
@@ -95,7 +95,7 @@ Summary:	Python interface to libidn
 Summary(pl):	Pythonowy interfejs do libidn
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
-%pyrequires_eq	python-lib
+%pyrequires_eq	python-libs
 
 %description -n python-idn
 Python interface to libidn (internationalized domain names library).
