@@ -21,7 +21,7 @@ BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-devel >= 0.14.1
 %{?with_java:BuildRequires:	jdk}
 BuildRequires:	libtool >= 2:1.5
-Buildrequires:	perl-base
+BuildRequires:	perl-base
 BuildRequires:	python-devel
 BuildRequires:	texinfo >= 4.7
 Requires(post,postun):	/sbin/ldconfig
