@@ -1,6 +1,9 @@
 # TODO:
 # - prepare package with web-files and java from contrib
 #
+# Conditional build:
+%bcond_with	java	# build Java implementation (but Punycode*.java missing from tar???)
+#
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
@@ -15,7 +18,9 @@ URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1.8
 BuildRequires:	gettext-devel >= 0.14.1
+%{?with_java:BuildRequires:	jdk}
 BuildRequires:	libtool >= 2:1.5
+BuildRequires:	python-devel
 BuildRequires:	texinfo >= 4.7
 Requires(post,postun):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -69,6 +74,34 @@ IDN support files for emacs.
 %description -n emacs-libidn-pkg -l pl
 Obs³uga IDN dla emacsa.
 
+%package -n java-libidn
+Summary:	Java implementation of libidn
+Summary(pl):	Implementacja libidn w Javie
+Group:		Libraries
+Requires:	jre
+
+%description -n java-libidn
+Java implementation of libidn (internationalized domain names
+library).
+
+%description -n java-libidn -l pl
+Implementacja libidn (biblioteki umiêdzynarodowionych nazw domen) w
+Javie.
+
+%package -n python-idn
+Summary:	Python interface to libidn
+Summary(pl):	Pythonowy interfejs do libidn
+Group:		Libraries/Python
+Requires:	%{name} = %{version}-%{release}
+%pyrequires_eq	python-lib
+
+%description -n python-idn
+Python interface to libidn (internationalized domain names library).
+
+%description -n python-idn -l pl
+Pythonowy interfejs do libidn (biblioteki umiêdzynarodowionych nazw
+domen).
+
 %prep
 %setup -q
 %patch0 -p1
@@ -81,15 +114,21 @@ Obs³uga IDN dla emacsa.
 %{__autoheader}
 %{__automake}
 %configure \
+	%{?with_java:--enable-java} \
 	--with-lispdir=%{_emacs_lispdir}
 
 %{__make}
+
+%{__make} -C contrib/idn-python \
+	INCLUDE="/usr/include/python2.3 %{rpmcflags} -L../../lib/.libs"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+install -D contrib/idn-python/idn.so $RPM_BUILD_ROOT%{py_sitedir}/idn.so
 
 %find_lang %{name}
 
@@ -127,3 +166,13 @@ rm -rf $RPM_BUILD_ROOT
 %files -n emacs-libidn-pkg
 %defattr(644,root,root,755)
 %{_emacs_lispdir}/*.el
+
+%if %{with java}
+%files -n java-libidn
+%defattr(644,root,root,755)
+%{_datadir}/java/libidn.jar
+%endif
+
+%files -n python-idn
+%defattr(644,root,root,755)
+%attr(755,root,root) %{py_sitedir}/idn.so
