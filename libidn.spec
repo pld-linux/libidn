@@ -2,17 +2,17 @@
 # - prepare package with web-files and java from contrib
 #
 # Conditional build:
-%bcond_with	java	# build Java implementation (but Punycode*.java missing from tar???)
+%bcond_with	java	# build Java implementation
 #
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
-Version:	0.4.5
+Version:	0.4.8
 Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	d0f3ad54b175be8b352ebe2d1550fcc6
+# Source0-md5:	1e1a88143a532151db7435a693905987
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
 URL:		http://www.gnu.org/software/libidn/
