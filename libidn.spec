@@ -22,7 +22,7 @@ BuildRequires:	gettext-devel >= 0.14.1
 %{?with_java:BuildRequires:	jdk}
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	perl-base
-BuildRequires:	python-devel
+BuildRequires:	python-devel >= 1:2.3
 BuildRequires:	texinfo >= 4.7
 Requires(post,postun):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
