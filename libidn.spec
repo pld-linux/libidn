@@ -1,18 +1,19 @@
 # TODO:
 # - prepare package with web-files from contrib
+# - // with emacs stuff
 #
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
-Version:	0.3.5
+Version:	0.3.6
 Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	916fb4b90e76edd5b6cb24a027399466
+# Source0-md5:	26c3b27a1233a9d752006c2fe01d1fbb
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/libidn/
-BuildRequires:	autoconf >= 2.59
+BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1.8
 BuildRequires:	libtool
 BuildRequires:	texinfo
@@ -59,6 +60,8 @@ Statyczna biblioteka libidn.
 
 # we don't have libtool 1.5a
 %{__perl} -pi -e 's/AC_LIBTOOL_TAGS//' configure.ac
+# we don't have cvs texinfo
+%{__perl} -pi -e 's/\@ordf\{\}/a/' doc/libidn.texi
 # incompatible with ksh
 rm -f m4/libtool.m4
 
