@@ -7,13 +7,14 @@
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
-Version:	0.4.2
+Version:	0.4.3
 Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	194d3d8e68501d3363f3842d83b96f1f
+# Source0-md5:	037271567340efbe8b23d0aa6c50ea4a
 Patch0:		%{name}-info.patch
+Patch1:		%{name}-python.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1.8
@@ -105,6 +106,7 @@ domen).
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__gettextize}
@@ -120,7 +122,7 @@ domen).
 %{__make}
 
 %{__make} -C contrib/idn-python \
-	INCLUDE="/usr/include/python2.3 %{rpmcflags} -L../../lib/.libs"
+	INCLUDE="/usr/include/python2.3 %{rpmcflags} -I../../lib -L../../lib/.libs"
 
 %install
 rm -rf $RPM_BUILD_ROOT
