@@ -4,20 +4,19 @@
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
-Version:	0.4.1
+Version:	0.4.2
 Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	1f40dbf9fdc147ab2d8670d591bbae04
-Source1:	%{name}-pl.po
+# Source0-md5:	194d3d8e68501d3363f3842d83b96f1f
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1.8
 BuildRequires:	gettext-devel >= 0.14.1
 BuildRequires:	libtool >= 2:1.5
-BuildRequires:	texinfo
+BuildRequires:	texinfo >= 4.7
 Requires(post,postun):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -73,13 +72,6 @@ Obs³uga IDN dla emacsa.
 %prep
 %setup -q
 %patch0 -p1
-
-cp -f %{SOURCE1} po/pl.po
-echo 'pl' >> po/LINGUAS
-rm -f po/stamp-po
-
-# we don't have texinfo > 4.6 yet
-%{__perl} -pi -e 's/\@ordf\{\}/a/' doc/libidn.texi
 
 %build
 %{__gettextize}
