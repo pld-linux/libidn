@@ -7,12 +7,12 @@
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
-Version:	0.4.9
+Version:	0.5.0
 Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	cc87a7bdce60a6e229f0984ca551e273
+# Source0-md5:	d13633479facc9163eb16db6f9662a3b
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
 Patch2:		%{name}-DESTDIR.patch
