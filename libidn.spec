@@ -7,21 +7,21 @@
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
-Version:	0.5.0
+Version:	0.5.2
 Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	d13633479facc9163eb16db6f9662a3b
+# Source0-md5:	fef54277d08cc74e7e99ff65e058e1b7
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
-Patch2:		%{name}-DESTDIR.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1.8
 BuildRequires:	gettext-devel >= 0.14.1
 %{?with_java:BuildRequires:	jdk}
 BuildRequires:	libtool >= 2:1.5
+Buildrequires:	perl-base
 BuildRequires:	python-devel
 BuildRequires:	texinfo >= 4.7
 Requires(post,postun):	/sbin/ldconfig
@@ -108,7 +108,6 @@ domen).
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %{__gettextize}
