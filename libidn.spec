@@ -110,7 +110,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog FAQ README THANKS TODO doc/libidn.html contrib
+%doc AUTHORS ChangeLog FAQ NEWS README* THANKS TODO doc/libidn.html contrib
 %attr(755,root,root) %{_bindir}/idn
 %attr(755,root,root) %{_libdir}/libidn.so.*.*.*
 %{_mandir}/man1/idn.1*
