@@ -4,12 +4,12 @@
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
-Version:	0.2.1
-Release:	2
+Version:	0.3.0
+Release:	1
 License:	LGPL v2.1
 Group:		Libraries
-Source0:	ftp://alpha.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
-# Source0-md5:	dedf4baabde459dc6263ca2f38d4f0f9
+Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
+# Source0-md5:	19bb430a85980c44f3ab237080cfa78e
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	texinfo
@@ -90,6 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libidn.la
 %{_includedir}/*.h
 %{_pkgconfigdir}/libidn.pc
+%{_mandir}/man3/*
 
 %files static
 %defattr(644,root,root,755)
