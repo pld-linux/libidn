@@ -4,16 +4,18 @@
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
-Version:	0.4.0
+Version:	0.4.1
 Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	71f3db9892848073c0c76b4d3326fd9a
+# Source0-md5:	1f40dbf9fdc147ab2d8670d591bbae04
+Source1:	%{name}-pl.po
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1.8
+BuildRequires:	gettext-devel >= 0.14.1
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	texinfo
 Requires(post,postun):	/sbin/ldconfig
@@ -72,10 +74,15 @@ Obs³uga IDN dla emacsa.
 %setup -q
 %patch0 -p1
 
-# we don't have cvs texinfo
+cp -f %{SOURCE1} po/pl.po
+echo 'pl' >> po/LINGUAS
+rm -f po/stamp-po
+
+# we don't have texinfo > 4.6 yet
 %{__perl} -pi -e 's/\@ordf\{\}/a/' doc/libidn.texi
 
 %build
+%{__gettextize}
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
@@ -92,6 +99,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%find_lang %{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -103,7 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 /sbin/ldconfig
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir %{_infodir} >/dev/null 2>&1
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog FAQ NEWS README* THANKS TODO doc/libidn.html contrib
 %attr(755,root,root) %{_bindir}/idn
