@@ -1,0 +1,20 @@
+--- libidn-0.4.3/contrib/idn-python/idn.c.orig	2004-04-05 22:52:12.000000000 +0200
++++ libidn-0.4.3/contrib/idn-python/idn.c	2004-04-24 20:50:51.796764136 +0200
+@@ -26,7 +26,7 @@
+   PyObject *outstr;
+   if (!PyArg_ParseTuple (args, "s", &instr))
+     onError ("Invalid argument");
+-  rc = idna_to_ascii_8z (instr, &result);
++  rc = idna_to_ascii_8z (instr, &result, 0);
+   if (rc != IDNA_SUCCESS)
+     {
+       switch (rc)
+@@ -56,7 +56,7 @@
+   PyObject *outstr;
+   if (!PyArg_ParseTuple (args, "s", &instr))
+     onError ("Invalid argument");
+-  rc = idna_to_unicode_8z8z (instr, &result);
++  rc = idna_to_unicode_8z8z (instr, &result, 0);
+   if (rc != IDNA_SUCCESS)
+     {
+       result = malloc (MESSAGE_SIZE);
