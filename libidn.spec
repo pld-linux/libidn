@@ -1,15 +1,15 @@
 # TODO:
-# - prepare package with web-files from contrib
+# - prepare package with web-files and java from contrib
 #
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
-Version:	0.3.6
+Version:	0.3.7
 Release:	2
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	26c3b27a1233a9d752006c2fe01d1fbb
+# Source0-md5:	3ec822e38dda0d1eadd032d82a5b238c
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.57
