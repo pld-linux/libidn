@@ -1,9 +1,12 @@
+# TODO:
+# - prepare package with web-files from contrib
+#
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
 Version:	0.2.1
-Release:	1
-License:	LGPL
+Release:	2
+License:	LGPL v2.1
 Group:		Libraries
 Source0:	ftp://alpha.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
 # Source0-md5:	dedf4baabde459dc6263ca2f38d4f0f9
@@ -75,7 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog README
+%doc ChangeLog FAQ README THANKS TODO doc/libidn.html contrib
 %attr(755,root,root) %{_bindir}/idn
 %attr(755,root,root) %{_libdir}/libidn.so.*.*.*
 %{_mandir}/man1/idn.1*
