@@ -125,7 +125,7 @@ domen).
 %{__make}
 
 %{__make} -C contrib/idn-python \
-	INCLUDE="/usr/include/python2.3 %{rpmcflags} -I../../lib -L../../lib/.libs"
+	INCLUDE="/usr/include/python2.4 -I/usr/include/python2.3 %{rpmcflags} -I../../lib -L../../lib/.libs"
 
 %install
 rm -rf $RPM_BUILD_ROOT
