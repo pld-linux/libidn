@@ -4,14 +4,17 @@
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
-Version:	0.3.3
+Version:	0.3.4
 Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	aae37748904f8fe944b01de4461b0034
+# Source0-md5:	0b2e1df28f86cdeb3b8e34770b652342
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/libidn/
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool
 BuildRequires:	texinfo
 Requires(post,postun):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -55,6 +58,12 @@ Statyczna biblioteka libidn.
 %patch -p1
 
 %build
+# rebuild needed - "autoconf 2.59" used here doesn't support ksh
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure
 
 %{__make}
