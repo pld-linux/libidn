@@ -4,17 +4,17 @@
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
-Version:	0.3.7
-Release:	2
+Version:	0.4.0
+Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	3ec822e38dda0d1eadd032d82a5b238c
+# Source0-md5:	71f3db9892848073c0c76b4d3326fd9a
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1.8
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:1.5
 BuildRequires:	texinfo
 Requires(post,postun):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -36,7 +36,7 @@ zdefiniowanych przez grupê robocz± IETF Internationalized Domain Names
 Summary:	Header files for libidn library
 Summary(pl):	Pliki nag³ówkowe biblioteki libidn
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for libidn library.
@@ -48,7 +48,7 @@ Pliki nag³ówkowe biblioteki libidn.
 Summary:	Static libidn library
 Summary(pl):	Statyczna biblioteka libidn
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libidn library.
@@ -60,7 +60,7 @@ Statyczna biblioteka libidn.
 Summary:	IDN support files for emacs
 Summary(pl):	Obs³uga IDN dla emacsa
 Group:		Applications/Editors/Emacs
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description -n emacs-libidn-pkg
 IDN support files for emacs.
@@ -72,15 +72,10 @@ Obs³uga IDN dla emacsa.
 %setup -q
 %patch0 -p1
 
-# we don't have libtool 1.5a
-%{__perl} -pi -e 's/AC_LIBTOOL_TAGS//' configure.ac
 # we don't have cvs texinfo
 %{__perl} -pi -e 's/\@ordf\{\}/a/' doc/libidn.texi
-# incompatible with ksh
-rm -f m4/libtool.m4
 
 %build
-# blegh, lt incompatible with ksh - must rebuild
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
