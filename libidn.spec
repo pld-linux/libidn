@@ -17,7 +17,7 @@ Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake >= 1.9
+BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-devel >= 0.14.1
 %{?with_java:BuildRequires:	jdk}
 BuildRequires:	libtool >= 2:1.5
