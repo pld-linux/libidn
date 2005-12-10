@@ -2,18 +2,25 @@
 # - prepare package with web-files and java from contrib
 #
 # Conditional build:
+%bcond_without	dotnet	# don't build C# binding
 %bcond_with	java	# build Java implementation
 %bcond_without	python	# don't build python interface
 #
+%ifnarch %{ix86} %{x8664} arm hppa ppc s390 s390x
+%undefine	with_dotnet
+%endif
+%ifarch i386
+%undefine	with_dotnet
+%endif
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
-Version:	0.5.20
+Version:	0.6.0
 Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	b8ccbdf43b8da1722a6773c4e426d059
+# Source0-md5:	4991ab5ce647c89fa4812d9a1700a8f6
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
 URL:		http://www.gnu.org/software/libidn/
@@ -22,6 +29,7 @@ BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-devel >= 0.14.1
 %{?with_java:BuildRequires:	jdk}
 BuildRequires:	libtool >= 2:1.5
+%{?with_dotnet:BuildRequires:	mono}
 BuildRequires:	perl-base
 %{?with_python:BuildRequires:	python-devel >= 1:2.3}
 BuildRequires:	texinfo >= 4.7
@@ -64,6 +72,18 @@ Static libidn library.
 
 %description static -l pl
 Statyczna biblioteka libidn.
+
+%package -n dotnet-libidn
+Summary:	C# binding for libidn
+Summary(pl):	Wi±zanie C# dla libidn
+Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description -n dotnet-libidn
+C# binding for libidn.
+
+%description -n dotnet-libidn -l pl
+Wi±zanie C# dla libidn.
 
 %package -n emacs-libidn-pkg
 Summary:	IDN support files for emacs
@@ -118,6 +138,7 @@ domen).
 %{__autoheader}
 %{__automake}
 %configure \
+	%{?with_dotnet:--enable-csharp=mono}%{!?with_dotnet:--disable-csharp} \
 	%{?with_java:--enable-java} \
 	--with-lispdir=%{_emacs_lispdir}
 
@@ -170,6 +191,13 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libidn.a
+
+%if %{with dotnet}
+%files -n dotnet-libidn
+%defattr(644,root,root,755)
+# why not in gac? does it work here?
+%{_libdir}/Libidn.dll
+%endif
 
 %files -n emacs-libidn-pkg
 %defattr(644,root,root,755)
