@@ -3,6 +3,7 @@
 #
 # Conditional build:
 %bcond_with	java	# build Java implementation
+%bcond_without	python	# don't build python interface
 #
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
@@ -22,7 +23,7 @@ BuildRequires:	gettext-devel >= 0.14.1
 %{?with_java:BuildRequires:	jdk}
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	perl-base
-BuildRequires:	python-devel >= 1:2.3
+%{?with_python:BuildRequires:	python-devel >= 1:2.3}
 BuildRequires:	texinfo >= 4.7
 Requires(post,postun):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -122,8 +123,10 @@ domen).
 
 %{__make}
 
+%if %{with python}
 %{__make} -C contrib/idn-python \
 	INCLUDE="/usr/include/python2.4 -I/usr/include/python2.3 %{rpmcflags} -I../../lib -L../../lib/.libs"
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -131,7 +134,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%if %{with python}
 install -D contrib/idn-python/idn.so $RPM_BUILD_ROOT%{py_sitedir}/idn.so
+%endif
 
 %find_lang %{name}
 
@@ -176,6 +181,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/java/libidn*.jar
 %endif
 
+%if %{with python}
 %files -n python-idn
 %defattr(644,root,root,755)
 %attr(755,root,root) %{py_sitedir}/idn.so
+%endif
