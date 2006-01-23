@@ -16,7 +16,7 @@ Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
 Version:	0.6.1
-Release:	1
+Release:	2
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
@@ -138,6 +138,7 @@ domen).
 %{__autoconf}
 %{__autoheader}
 %{__automake}
+JAR=%{_bindir}/fastjar \
 %configure \
 	%{?with_dotnet:--enable-csharp=mono}%{!?with_dotnet:--disable-csharp} \
 	%{?with_java:--enable-java} \
