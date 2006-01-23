@@ -3,7 +3,7 @@
 #
 # Conditional build:
 %bcond_without	dotnet	# don't build C# binding
-%bcond_with	java	# build Java implementation
+%bcond_without	java	# don't build Java implementation
 %bcond_without	python	# don't build python interface
 #
 %ifnarch %{ix86} %{x8664} arm hppa ppc s390 s390x
@@ -15,19 +15,20 @@
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
-Version:	0.6.0
+Version:	0.6.1
 Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	4991ab5ce647c89fa4812d9a1700a8f6
+# Source0-md5:	7634c115a747ba0c9b7109553dcfc6c6
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
+%{?with_java:BuildRequires:	gcc-java}
 BuildRequires:	gettext-devel >= 0.14.1
-%{?with_java:BuildRequires:	jdk}
+%{?with_java:BuildRequires:	gjdoc}
 BuildRequires:	libtool >= 2:1.5
 %{?with_dotnet:BuildRequires:	mono}
 BuildRequires:	perl-base
