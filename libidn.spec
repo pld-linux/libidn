@@ -15,14 +15,15 @@
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
-Version:	0.6.3
+Version:	0.6.5
 Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	d240631c93c7d3a0e93cdf66f536073f
+# Source0-md5:	86ccf6f9e21753a2d070e44ea3c2c224
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
+Patch2:		%{name}-pl.po-update.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -130,6 +131,9 @@ domen).
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+
+rm -f po/stamp-po
 
 %build
 %{__gettextize}
