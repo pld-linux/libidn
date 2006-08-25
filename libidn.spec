@@ -15,12 +15,12 @@
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
-Version:	0.6.5
+Version:	0.6.6
 Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	86ccf6f9e21753a2d070e44ea3c2c224
+# Source0-md5:	20181e7009337e539c2f9a06b10915ec
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
 Patch2:		%{name}-pl.po-update.patch
