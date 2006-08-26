@@ -16,7 +16,7 @@ Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
 Version:	0.6.6
-Release:	1
+Release:	2
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
@@ -152,7 +152,7 @@ JAR=%{_bindir}/fastjar \
 
 %if %{with python}
 %{__make} -C contrib/idn-python \
-	INCLUDE="/usr/include/python2.4 -I/usr/include/python2.3 %{rpmcflags} -I../../lib -L../../lib/.libs"
+	INCLUDE="%{py_incdir} %{rpmcflags} -I../../lib -L../../lib/.libs"
 %endif
 
 %install
