@@ -2,8 +2,8 @@
 # - prepare package with web-files and java from contrib
 #
 # Conditional build:
-%bcond_with	dotnet	# build C# binding
-%bcond_with	java	# build Java implementation
+%bcond_without	dotnet	# don't build C# binding
+%bcond_without	java	# don't build Java implementation
 %bcond_without	python	# don't build python interface
 #
 %ifnarch %{ix86} %{x8664} arm hppa ppc s390 s390x
