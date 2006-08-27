@@ -167,6 +167,8 @@ install -D contrib/idn-python/idn.so $RPM_BUILD_ROOT%{py_sitedir}/idn.so
 
 %find_lang %{name}
 
+rm -f $RPM_BUILD_ROOT%{_infodir}/dir
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
