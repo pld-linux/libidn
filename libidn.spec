@@ -25,7 +25,7 @@ Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
 Patch2:		%{name}-pl.po-update.patch
 URL:		http://www.gnu.org/software/libidn/
-BuildRequires:	autoconf >= 2.59
+BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.9
 %{?with_java:BuildRequires:	gcc-java}
 BuildRequires:	gettext-devel >= 0.14.1
