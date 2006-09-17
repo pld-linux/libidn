@@ -34,6 +34,7 @@ BuildRequires:	libtool >= 2:1.5
 %{?with_dotnet:BuildRequires:	mono}
 BuildRequires:	perl-base
 %{?with_python:BuildRequires:	python-devel >= 1:2.3}
+%{?with_python:BuildRequires:	rpm-pythonprov}
 BuildRequires:	texinfo >= 4.7
 Requires(post,postun):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
