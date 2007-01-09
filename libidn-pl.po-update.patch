@@ -1,21 +1,21 @@
---- libidn-0.6.9/po/pl.po.orig	2006-11-30 13:04:33.000000000 +0100
-+++ libidn-0.6.9/po/pl.po	2006-12-06 20:37:51.737698114 +0100
+--- libidn-0.6.10/po/pl.po.orig	2007-01-04 10:43:21.000000000 +0100
++++ libidn-0.6.10/po/pl.po	2007-01-09 19:45:26.876294522 +0100
 @@ -1,14 +1,14 @@
  # Polish translation for libidn.
 -# Copyright (C) 2004 Free Software Foundation, Inc.
 +# Copyright (C) 2004, 2006 Free Software Foundation, Inc.
  # This file is distributed under the same license as the libidn package.
 -# Jakub Bogusz <qboosh@pld-linux.org>, 2004.
-+# Jakub Bogusz <qboosh@pld-linux.org>, 2004-2006.
++# Jakub Bogusz <qboosh@pld-linux.org>, 2004-2007.
  #
  msgid ""
  msgstr ""
 -"Project-Id-Version: libidn 0.5.6\n"
-+"Project-Id-Version: libidn 0.6.9\n"
++"Project-Id-Version: libidn 0.6.10\n"
  "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
- "POT-Creation-Date: 2006-11-30 12:57+0100\n"
+ "POT-Creation-Date: 2007-01-04 10:40+0100\n"
 -"PO-Revision-Date: 2004-10-15 22:20+0200\n"
-+"PO-Revision-Date: 2006-12-06 20:35+0100\n"
++"PO-Revision-Date: 2007-01-09 19:40+0100\n"
  "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
  "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
  "MIME-Version: 1.0\n"
