@@ -15,20 +15,18 @@
 Summary:	Internationalized string processing library
 Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
 Name:		libidn
-Version:	0.6.6
-Release:	2
+Version:	0.6.10
+Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	20181e7009337e539c2f9a06b10915ec
+# Source0-md5:	443c25385059eb72e4588112af72c0c0
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
 Patch2:		%{name}-pl.po-update.patch
 URL:		http://www.gnu.org/software/libidn/
-BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake >= 1:1.9
 %{?with_java:BuildRequires:	gcc-java}
-BuildRequires:	gettext-devel >= 0.14.1
+BuildRequires:	gettext-devel >= 0.16
 %{?with_java:BuildRequires:	gjdoc}
 BuildRequires:	libtool >= 2:1.5
 %{?with_dotnet:BuildRequires:	mono}
@@ -137,12 +135,6 @@ domen).
 rm -f po/stamp-po
 
 %build
-%{__gettextize}
-%{__libtoolize}
-%{__aclocal} -I m4 -I gl/m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
 JAR=%{_bindir}/fastjar \
 %configure \
 	%{?with_dotnet:--enable-csharp=mono}%{!?with_dotnet:--disable-csharp} \
