@@ -13,7 +13,7 @@
 %undefine	with_dotnet
 %endif
 Summary:	Internationalized string processing library
-Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
+Summary(pl.UTF-8):   Biblioteka do przetwarzania umiÄ™dzynarodowionych Å‚aÅ„cuchÃ³w
 Name:		libidn
 Version:	0.6.10
 Release:	1
@@ -47,62 +47,62 @@ GNU Libidn is an implementation of the Stringprep, Punycode and IDNA
 specifications defined by the IETF Internationalized Domain Names
 (IDN) working group, used for internationalized domain names.
 
-%description -l pl
+%description -l pl.UTF-8
 GNU Libidn to implementacja specyfikacji Stringprep, Punycode i IDNA
-zdefiniowanych przez grupê robocz± IETF Internationalized Domain Names
-(IDN), zajmuj±c± siê umiêdzynarodowionymi nazwami domen.
+zdefiniowanych przez grupÄ™ roboczÄ… IETF Internationalized Domain Names
+(IDN), zajmujÄ…cÄ… siÄ™ umiÄ™dzynarodowionymi nazwami domen.
 
 %package devel
 Summary:	Header files for libidn library
-Summary(pl):	Pliki nag³ówkowe biblioteki libidn
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe biblioteki libidn
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for libidn library.
 
-%description devel -l pl
-Pliki nag³ówkowe biblioteki libidn.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe biblioteki libidn.
 
 %package static
 Summary:	Static libidn library
-Summary(pl):	Statyczna biblioteka libidn
+Summary(pl.UTF-8):   Statyczna biblioteka libidn
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libidn library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka libidn.
 
 %package -n dotnet-libidn
 Summary:	C# binding for libidn
-Summary(pl):	Wi±zanie C# dla libidn
+Summary(pl.UTF-8):   WiÄ…zanie C# dla libidn
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description -n dotnet-libidn
 C# binding for libidn.
 
-%description -n dotnet-libidn -l pl
-Wi±zanie C# dla libidn.
+%description -n dotnet-libidn -l pl.UTF-8
+WiÄ…zanie C# dla libidn.
 
 %package -n emacs-libidn-pkg
 Summary:	IDN support files for emacs
-Summary(pl):	Obs³uga IDN dla emacsa
+Summary(pl.UTF-8):   ObsÅ‚uga IDN dla emacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name} = %{version}-%{release}
 
 %description -n emacs-libidn-pkg
 IDN support files for emacs.
 
-%description -n emacs-libidn-pkg -l pl
-Obs³uga IDN dla emacsa.
+%description -n emacs-libidn-pkg -l pl.UTF-8
+ObsÅ‚uga IDN dla emacsa.
 
 %package -n java-libidn
 Summary:	Java implementation of libidn
-Summary(pl):	Implementacja libidn w Javie
+Summary(pl.UTF-8):   Implementacja libidn w Javie
 Group:		Libraries
 Requires:	jre
 
@@ -110,13 +110,13 @@ Requires:	jre
 Java implementation of libidn (internationalized domain names
 library).
 
-%description -n java-libidn -l pl
-Implementacja libidn (biblioteki umiêdzynarodowionych nazw domen) w
+%description -n java-libidn -l pl.UTF-8
+Implementacja libidn (biblioteki umiÄ™dzynarodowionych nazw domen) w
 Javie.
 
 %package -n python-idn
 Summary:	Python interface to libidn
-Summary(pl):	Pythonowy interfejs do libidn
+Summary(pl.UTF-8):   Pythonowy interfejs do libidn
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
 %pyrequires_eq	python-libs
@@ -124,8 +124,8 @@ Requires:	%{name} = %{version}-%{release}
 %description -n python-idn
 Python interface to libidn (internationalized domain names library).
 
-%description -n python-idn -l pl
-Pythonowy interfejs do libidn (biblioteki umiêdzynarodowionych nazw
+%description -n python-idn -l pl.UTF-8
+Pythonowy interfejs do libidn (biblioteki umiÄ™dzynarodowionych nazw
 domen).
 
 %prep
