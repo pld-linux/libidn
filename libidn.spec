@@ -13,7 +13,7 @@
 %undefine	with_dotnet
 %endif
 Summary:	Internationalized string processing library
-Summary(pl.UTF-8):   Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
+Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
 Version:	0.6.10
 Release:	1
@@ -54,7 +54,7 @@ zdefiniowanych przez grupę roboczą IETF Internationalized Domain Names
 
 %package devel
 Summary:	Header files for libidn library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki libidn
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libidn
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -66,7 +66,7 @@ Pliki nagłówkowe biblioteki libidn.
 
 %package static
 Summary:	Static libidn library
-Summary(pl.UTF-8):   Statyczna biblioteka libidn
+Summary(pl.UTF-8):	Statyczna biblioteka libidn
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -78,7 +78,7 @@ Statyczna biblioteka libidn.
 
 %package -n dotnet-libidn
 Summary:	C# binding for libidn
-Summary(pl.UTF-8):   Wiązanie C# dla libidn
+Summary(pl.UTF-8):	Wiązanie C# dla libidn
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -90,7 +90,7 @@ Wiązanie C# dla libidn.
 
 %package -n emacs-libidn-pkg
 Summary:	IDN support files for emacs
-Summary(pl.UTF-8):   Obsługa IDN dla emacsa
+Summary(pl.UTF-8):	Obsługa IDN dla emacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name} = %{version}-%{release}
 
@@ -102,7 +102,7 @@ Obsługa IDN dla emacsa.
 
 %package -n java-libidn
 Summary:	Java implementation of libidn
-Summary(pl.UTF-8):   Implementacja libidn w Javie
+Summary(pl.UTF-8):	Implementacja libidn w Javie
 Group:		Libraries
 Requires:	jre
 
@@ -116,7 +116,7 @@ Javie.
 
 %package -n python-idn
 Summary:	Python interface to libidn
-Summary(pl.UTF-8):   Pythonowy interfejs do libidn
+Summary(pl.UTF-8):	Pythonowy interfejs do libidn
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
 %pyrequires_eq	python-libs
