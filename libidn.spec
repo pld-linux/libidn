@@ -6,7 +6,7 @@
 %bcond_without	java	# don't build Java implementation
 %bcond_without	python	# don't build python interface
 #
-%ifnarch %{ix86} %{x8664} arm hppa ppc s390 s390x
+%ifnarch %{ix86} %{x8664} alpha arm hppa ppc s390 s390x sparc sparcv9 sparc64
 %undefine	with_dotnet
 %endif
 %ifarch i386
@@ -15,12 +15,12 @@
 Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
-Version:	0.6.11
+Version:	0.6.12
 Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	535817ae832eadbf289b5e0bf27b5c74
+# Source0-md5:	dd0222d0961fb432e81e08df43cfb36f
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
 Patch2:		%{name}-pl.po-update.patch
