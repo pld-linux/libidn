@@ -15,15 +15,14 @@
 Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
-Version:	0.6.12
+Version:	0.6.14
 Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	dd0222d0961fb432e81e08df43cfb36f
+# Source0-md5:	040f012a45feb56168853998bb87ad4d
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
-Patch2:		%{name}-pl.po-update.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake >= 1:1.10
@@ -41,6 +40,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # is it correct?
 %define		_emacs_lispdir	%{_datadir}/emacs/site-lisp
+
+# compress man/info manually as current macross would compress *.png in %{_infodir}
+%define		no_install_post_compress_docs	1
 
 %description
 GNU Libidn is an implementation of the Stringprep, Punycode and IDNA
@@ -132,7 +134,6 @@ domen).
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 rm -f po/stamp-po
 
@@ -170,6 +171,8 @@ install -D contrib/idn-python/idn.so $RPM_BUILD_ROOT%{py_sitedir}/idn.so
 
 rm -f $RPM_BUILD_ROOT%{_infodir}/dir
 
+gzip -9n $RPM_BUILD_ROOT{%{_mandir}/man{1,3}/*,%{_infodir}/*.info*}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -188,6 +191,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libidn.so.*.*.*
 %{_mandir}/man1/idn.1*
 %{_infodir}/libidn.info*
+%{_infodir}/libidn-*.png
 
 %files devel
 %defattr(644,root,root,755)
