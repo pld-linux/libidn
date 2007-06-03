@@ -34,15 +34,13 @@ BuildRequires:	libtool >= 2:1.5
 BuildRequires:	perl-base
 %{?with_python:BuildRequires:	python-devel >= 1:2.3}
 %{?with_python:BuildRequires:	rpm-pythonprov}
+BuildRequires:	rpmbuild(macros) >= 1.384
 BuildRequires:	texinfo >= 4.7
 Requires(post,postun):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # is it correct?
 %define		_emacs_lispdir	%{_datadir}/emacs/site-lisp
-
-# compress man/info manually as current macross would compress *.png in %{_infodir}
-%define		no_install_post_compress_docs	1
 
 %description
 GNU Libidn is an implementation of the Stringprep, Punycode and IDNA
@@ -170,8 +168,6 @@ install -D contrib/idn-python/idn.so $RPM_BUILD_ROOT%{py_sitedir}/idn.so
 %find_lang %{name}
 
 rm -f $RPM_BUILD_ROOT%{_infodir}/dir
-
-gzip -9n $RPM_BUILD_ROOT{%{_mandir}/man{1,3}/*,%{_infodir}/*.info*}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
