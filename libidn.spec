@@ -15,12 +15,12 @@
 Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
-Version:	0.6.14
+Version:	1.0
 Release:	1
-License:	LGPL v2.1
+License:	LGPL v2.1+ (library), GPL v3+ (utilities)
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	040f012a45feb56168853998bb87ad4d
+# Source0-md5:	8a6a15dc061c0e17a97cb6b77d850e86
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
 URL:		http://www.gnu.org/software/libidn/
@@ -55,6 +55,7 @@ zdefiniowanych przez grupę roboczą IETF Internationalized Domain Names
 %package devel
 Summary:	Header files for libidn library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libidn
+License:	LGPL v2.1+
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -67,6 +68,7 @@ Pliki nagłówkowe biblioteki libidn.
 %package static
 Summary:	Static libidn library
 Summary(pl.UTF-8):	Statyczna biblioteka libidn
+License:	LGPL v2.1+
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -79,6 +81,7 @@ Statyczna biblioteka libidn.
 %package -n dotnet-libidn
 Summary:	C# binding for libidn
 Summary(pl.UTF-8):	Wiązanie C# dla libidn
+License:	LGPL v2.1+
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -91,6 +94,7 @@ Wiązanie C# dla libidn.
 %package -n emacs-libidn-pkg
 Summary:	IDN support files for emacs
 Summary(pl.UTF-8):	Obsługa IDN dla emacsa
+License:	GPL v3+
 Group:		Applications/Editors/Emacs
 Requires:	%{name} = %{version}-%{release}
 
@@ -103,6 +107,7 @@ Obsługa IDN dla emacsa.
 %package -n java-libidn
 Summary:	Java implementation of libidn
 Summary(pl.UTF-8):	Implementacja libidn w Javie
+License:	LGPL v2.1+
 Group:		Libraries
 Requires:	jre
 
@@ -117,6 +122,7 @@ Javie.
 %package -n python-idn
 Summary:	Python interface to libidn
 Summary(pl.UTF-8):	Pythonowy interfejs do libidn
+License:	LGPL v2.1+
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
 %pyrequires_eq	python-libs
