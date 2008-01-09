@@ -15,19 +15,20 @@
 Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
-Version:	1.3
+Version:	1.4
 Release:	1
 License:	LGPL v2.1+ (library), GPL v3+ (utilities)
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	eb05059e616baf0e2908921cc12ba977
+# Source0-md5:	c2483d26e87cb8ec1ad532bb6b5cf295
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
+Patch2:		%{name}-pl.po-update.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake >= 1:1.10
 %{?with_java:BuildRequires:	gcc-java}
-BuildRequires:	gettext-devel >= 0.16
+BuildRequires:	gettext-devel >= 0.17
 %{?with_java:BuildRequires:	gjdoc}
 BuildRequires:	libtool >= 2:1.5
 %{?with_dotnet:BuildRequires:	mono}
@@ -138,6 +139,7 @@ domen).
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 rm -f po/stamp-po
 
@@ -191,6 +193,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog FAQ NEWS README* THANKS TODO doc/libidn.html contrib
 %attr(755,root,root) %{_bindir}/idn
 %attr(755,root,root) %{_libdir}/libidn.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libidn.so.11
 %{_mandir}/man1/idn.1*
 %{_infodir}/libidn.info*
 %{_infodir}/libidn-*.png
@@ -199,9 +202,18 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libidn.so
 %{_libdir}/libidn.la
-%{_includedir}/*.h
+%{_includedir}/idn-*.h
+%{_includedir}/idna.h
+%{_includedir}/pr29.h
+%{_includedir}/punycode.h
+%{_includedir}/stringprep.h
+%{_includedir}/tld.h
 %{_pkgconfigdir}/libidn.pc
-%{_mandir}/man3/*
+%{_mandir}/man3/idna_*.3*
+%{_mandir}/man3/pr29_*.3*
+%{_mandir}/man3/punycode_*.3*
+%{_mandir}/man3/stringprep*.3*
+%{_mandir}/man3/tld_*.3*
 
 %files static
 %defattr(644,root,root,755)
