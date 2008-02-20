@@ -15,15 +15,14 @@
 Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
-Version:	1.4
+Version:	1.5
 Release:	1
 License:	LGPL v2.1+ (library), GPL v3+ (utilities)
 Group:		Libraries
 Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	c2483d26e87cb8ec1ad532bb6b5cf295
+# Source0-md5:	5d95424a76fb7356f54e7fba83eb3379
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
-Patch2:		%{name}-pl.po-update.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake >= 1:1.10
@@ -139,9 +138,10 @@ domen).
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 rm -f po/stamp-po
+# we don't have libtool 2.1b
+rm m4/libtool.m4 m4/lt*.m4
 
 %build
 %{__gettextize}
