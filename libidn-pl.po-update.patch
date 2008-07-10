@@ -1,42 +1,39 @@
---- libidn-1.8/po/pl.po.orig	2008-04-23 09:36:16.000000000 +0200
-+++ libidn-1.8/po/pl.po	2008-05-12 20:03:06.048608850 +0200
+--- libidn-1.9/po/pl.po.orig	2008-07-01 18:15:32.000000000 +0200
++++ libidn-1.9/po/pl.po	2008-07-10 20:55:30.931021224 +0200
 @@ -5,10 +5,10 @@
  #
  msgid ""
  msgstr ""
--"Project-Id-Version: libidn 1.4\n"
-+"Project-Id-Version: libidn 1.8\n"
+-"Project-Id-Version: libidn 1.8\n"
++"Project-Id-Version: libidn 1.9\n"
  "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
- "POT-Creation-Date: 2008-04-23 09:32+0200\n"
--"PO-Revision-Date: 2008-01-09 21:40+0100\n"
-+"PO-Revision-Date: 2008-04-23 21:52+0200\n"
+ "POT-Creation-Date: 2008-07-01 18:15+0200\n"
+-"PO-Revision-Date: 2008-04-23 21:52+0200\n"
++"PO-Revision-Date: 2008-07-02 22:10+0200\n"
  "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
  "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
  "MIME-Version: 1.0\n"
-@@ -240,6 +240,8 @@
- msgid ""
- "  -n, --nfkc               Normalize string according to Unicode v3.2 NFKC\n"
- msgstr ""
-+"  -n, --nfkc               Normalizacja ³añcucha zgodnie z Unicode v3.2 "
-+"NFKC\n"
+@@ -348,21 +348,6 @@
+ msgstr "idna_to_unicode_8z4z: %s"
  
- #: src/idn.c:120
- msgid ""
-@@ -262,9 +264,9 @@
- "      --quiet              Dzia³enie po cichu\n"
- 
- #: src/idn.c:176
+ #: src/idn.c:540
 -#, fuzzy, c-format
 +#, c-format
- msgid "Only one of -s, -e, -d, -a, -u or -n can be specified."
--msgstr "Mo¿na podaæ tylko jedno z -s, -e, -d, -a lub -u."
-+msgstr "Mo¿na podaæ tylko jedno z -s, -e, -d, -a, -u lub -n."
- 
- #: src/idn.c:184
- #, c-format
-@@ -368,4 +370,4 @@
- #: src/idn.c:540
- #, c-format
- msgid "nfkc: %s"
--msgstr ""
-+msgstr "nfkc: %s"
+ msgid "Could not do NFKC normalization."
+-msgstr "£añcuch nie idempotentny wzglêdem normalizacji Unikodu NFKC"
+-
+-#~ msgid "input[%lu] = U+%04x\n"
+-#~ msgstr "wej¶cie[%lu] = U+%04x\n"
+-
+-#~ msgid "output[%lu] = U+%04x\n"
+-#~ msgstr "wyj¶cie[%lu] = U+%04x\n"
+-
+-#~ msgid "malloc"
+-#~ msgstr "malloc"
+-
+-#~ msgid "tld[%lu] = U+%04x\n"
+-#~ msgstr "tld[%lu] = U+%04x\n"
+-
+-#~ msgid "nfkc: %s"
+-#~ msgstr "nfkc: %s"
++msgstr "Normalizacja NFKC nie powiod³a siê."
