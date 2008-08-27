@@ -2,8 +2,13 @@
 # - prepare package with web-files and java from contrib
 #
 # Conditional build:
+%if "%{pld_release}" == "ac"
+%bcond_with		dotnet	# don't build C# binding
+%bcond_with		java	# don't build Java implementation
+%else
 %bcond_without	dotnet	# don't build C# binding
 %bcond_without	java	# don't build Java implementation
+%endif
 %bcond_without	python	# don't build python interface
 #
 %ifnarch %{ix86} %{x8664} alpha arm hppa ppc s390 s390x sparc sparcv9 sparc64
@@ -35,6 +40,7 @@ BuildRequires:	perl-base
 %{?with_python:BuildRequires:	python-devel >= 1:2.3}
 %{?with_python:BuildRequires:	rpm-pythonprov}
 BuildRequires:	rpmbuild(macros) >= 1.384
+BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	texinfo >= 4.7
 Requires(post,postun):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -159,6 +165,7 @@ JAR=%{_bindir}/fastjar \
 %if %{with python}
 %{__make} -C contrib/idn-python \
 	INCLUDE="%{py_incdir} %{rpmcflags} -I../../lib -L../../lib/.libs"
+mv contrib/idn-python/idn.so python-idn.so
 %endif
 
 %install
@@ -168,7 +175,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %if %{with python}
-install -D contrib/idn-python/idn.so $RPM_BUILD_ROOT%{py_sitedir}/idn.so
+install -D python-idn.so $RPM_BUILD_ROOT%{py_sitedir}/idn.so
 %endif
 
 %find_lang %{name}
