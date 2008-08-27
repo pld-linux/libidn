@@ -2,39 +2,45 @@
 # - prepare package with web-files and java from contrib
 #
 # Conditional build:
+%if "%{pld_release}" == "ac"
+%bcond_with		dotnet	# don't build C# binding
+%bcond_with		java	# don't build Java implementation
+%else
 %bcond_without	dotnet	# don't build C# binding
 %bcond_without	java	# don't build Java implementation
+%endif
 %bcond_without	python	# don't build python interface
 #
-%ifnarch %{ix86} %{x8664} arm hppa ppc s390 s390x
+%ifnarch %{ix86} %{x8664} alpha arm hppa ppc s390 s390x sparc sparcv9 sparc64
 %undefine	with_dotnet
 %endif
 %ifarch i386
 %undefine	with_dotnet
 %endif
 Summary:	Internationalized string processing library
-Summary(pl):	Biblioteka do przetwarzania umiêdzynarodowionych ³añcuchów
+Summary(pl.UTF-8):	Biblioteka do przetwarzania umiÄ™dzynarodowionych Å‚aÅ„cuchÃ³w
 Name:		libidn
-Version:	0.6.9
-Release:	1
-License:	LGPL v2.1
+Version:	1.10
+Release:	2
+License:	LGPL v2.1+ (library), GPL v3+ (utilities)
 Group:		Libraries
-Source0:	http://josefsson.org/libidn/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	616135837f5aaa9fac752e6b54221fb3
+Source0:	http://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
+# Source0-md5:	142c21f2bd922c84c4a3c3d469bbc596
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
-Patch2:		%{name}-pl.po-update.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake >= 1:1.10
 %{?with_java:BuildRequires:	gcc-java}
-BuildRequires:	gettext-devel >= 0.16
+BuildRequires:	gettext-devel >= 0.17
 %{?with_java:BuildRequires:	gjdoc}
 BuildRequires:	libtool >= 2:1.5
 %{?with_dotnet:BuildRequires:	mono}
 BuildRequires:	perl-base
 %{?with_python:BuildRequires:	python-devel >= 1:2.3}
 %{?with_python:BuildRequires:	rpm-pythonprov}
+BuildRequires:	rpmbuild(macros) >= 1.384
+BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	texinfo >= 4.7
 Requires(post,postun):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -47,62 +53,67 @@ GNU Libidn is an implementation of the Stringprep, Punycode and IDNA
 specifications defined by the IETF Internationalized Domain Names
 (IDN) working group, used for internationalized domain names.
 
-%description -l pl
+%description -l pl.UTF-8
 GNU Libidn to implementacja specyfikacji Stringprep, Punycode i IDNA
-zdefiniowanych przez grupê robocz± IETF Internationalized Domain Names
-(IDN), zajmuj±c± siê umiêdzynarodowionymi nazwami domen.
+zdefiniowanych przez grupÄ™ roboczÄ… IETF Internationalized Domain Names
+(IDN), zajmujÄ…cÄ… siÄ™ umiÄ™dzynarodowionymi nazwami domen.
 
 %package devel
 Summary:	Header files for libidn library
-Summary(pl):	Pliki nag³ówkowe biblioteki libidn
+Summary(pl.UTF-8):	Pliki nagÅ‚Ã³wkowe biblioteki libidn
+License:	LGPL v2.1+
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for libidn library.
 
-%description devel -l pl
-Pliki nag³ówkowe biblioteki libidn.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe biblioteki libidn.
 
 %package static
 Summary:	Static libidn library
-Summary(pl):	Statyczna biblioteka libidn
+Summary(pl.UTF-8):	Statyczna biblioteka libidn
+License:	LGPL v2.1+
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libidn library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka libidn.
 
 %package -n dotnet-libidn
 Summary:	C# binding for libidn
-Summary(pl):	Wi±zanie C# dla libidn
+Summary(pl.UTF-8):	WiÄ…zanie C# dla libidn
+License:	LGPL v2.1+
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description -n dotnet-libidn
 C# binding for libidn.
 
-%description -n dotnet-libidn -l pl
-Wi±zanie C# dla libidn.
+%description -n dotnet-libidn -l pl.UTF-8
+WiÄ…zanie C# dla libidn.
 
 %package -n emacs-libidn-pkg
 Summary:	IDN support files for emacs
-Summary(pl):	Obs³uga IDN dla emacsa
+Summary(pl.UTF-8):	ObsÅ‚uga IDN dla emacsa
+License:	GPL v3+
 Group:		Applications/Editors/Emacs
 Requires:	%{name} = %{version}-%{release}
 
 %description -n emacs-libidn-pkg
 IDN support files for emacs.
 
-%description -n emacs-libidn-pkg -l pl
-Obs³uga IDN dla emacsa.
+%description -n emacs-libidn-pkg -l pl.UTF-8
+ObsÅ‚uga IDN dla emacsa.
 
 %package -n java-libidn
 Summary:	Java implementation of libidn
-Summary(pl):	Implementacja libidn w Javie
+Summary(pl.UTF-8):	Implementacja libidn w Javie
+License:	LGPL v2.1+
 Group:		Libraries
 Requires:	jre
 
@@ -110,13 +121,14 @@ Requires:	jre
 Java implementation of libidn (internationalized domain names
 library).
 
-%description -n java-libidn -l pl
-Implementacja libidn (biblioteki umiêdzynarodowionych nazw domen) w
+%description -n java-libidn -l pl.UTF-8
+Implementacja libidn (biblioteki umiÄ™dzynarodowionych nazw domen) w
 Javie.
 
 %package -n python-idn
 Summary:	Python interface to libidn
-Summary(pl):	Pythonowy interfejs do libidn
+Summary(pl.UTF-8):	Pythonowy interfejs do libidn
+License:	LGPL v2.1+
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
 %pyrequires_eq	python-libs
@@ -124,22 +136,27 @@ Requires:	%{name} = %{version}-%{release}
 %description -n python-idn
 Python interface to libidn (internationalized domain names library).
 
-%description -n python-idn -l pl
-Pythonowy interfejs do libidn (biblioteki umiêdzynarodowionych nazw
+%description -n python-idn -l pl.UTF-8
+Pythonowy interfejs do libidn (biblioteki umiÄ™dzynarodowionych nazw
 domen).
 
 %prep
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 rm -f po/stamp-po
+
+# avoid different builds having different timestamps
+# see http://lists.pld-linux.org/mailman/pipermail/pld-devel-en/2008-August/020363.html
+d='$Date: 2008-08-27 23:06:00 $'
+d=${d#?Date: }; d=${d%%%% *}; d=$(date -d "$d" '+%d %B %Y')
+%{__sed} -i -e "s,@value{UPDATED},$d,g" doc/libidn.texi
 
 %build
 %{__gettextize}
 %{__libtoolize}
-%{__aclocal} -I m4 -I gl/m4
+%{__aclocal} -I m4 -I gl/m4 -I lib/gl/m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
@@ -154,6 +171,7 @@ JAR=%{_bindir}/fastjar \
 %if %{with python}
 %{__make} -C contrib/idn-python \
 	INCLUDE="%{py_incdir} %{rpmcflags} -I../../lib -L../../lib/.libs"
+mv contrib/idn-python/idn.so python-idn.so
 %endif
 
 %install
@@ -163,7 +181,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %if %{with python}
-install -D contrib/idn-python/idn.so $RPM_BUILD_ROOT%{py_sitedir}/idn.so
+install -D python-idn.so $RPM_BUILD_ROOT%{py_sitedir}/idn.so
 %endif
 
 %find_lang %{name}
@@ -186,16 +204,27 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog FAQ NEWS README* THANKS TODO doc/libidn.html contrib
 %attr(755,root,root) %{_bindir}/idn
 %attr(755,root,root) %{_libdir}/libidn.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libidn.so.11
 %{_mandir}/man1/idn.1*
 %{_infodir}/libidn.info*
+%{_infodir}/libidn-*.png
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libidn.so
 %{_libdir}/libidn.la
-%{_includedir}/*.h
+%{_includedir}/idn-*.h
+%{_includedir}/idna.h
+%{_includedir}/pr29.h
+%{_includedir}/punycode.h
+%{_includedir}/stringprep.h
+%{_includedir}/tld.h
 %{_pkgconfigdir}/libidn.pc
-%{_mandir}/man3/*
+%{_mandir}/man3/idna_*.3*
+%{_mandir}/man3/pr29_*.3*
+%{_mandir}/man3/punycode_*.3*
+%{_mandir}/man3/stringprep*.3*
+%{_mandir}/man3/tld_*.3*
 
 %files static
 %defattr(644,root,root,755)
