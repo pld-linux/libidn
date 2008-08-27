@@ -149,8 +149,8 @@ rm -f po/stamp-po
 
 # avoid different builds having different timestamps
 # see http://lists.pld-linux.org/mailman/pipermail/pld-devel-en/2008-August/020363.html
-d='$Date: 2008-08-27 23:03:46 $'
-d=${d#\$Date: 2008-08-27 23:03:46 ${d%%%% *}; d=$(date -d "$d" '+%d %B %Y')
+d='$Date: 2008-08-27 23:06:00 $'
+d=${d#?Date: }; d=${d%%%% *}; d=$(date -d "$d" '+%d %B %Y')
 %{__sed} -i -e "s,@value{UPDATED},$d,g" doc/libidn.texi
 
 %build
