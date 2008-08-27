@@ -21,7 +21,7 @@ Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
 Version:	1.10
-Release:	1
+Release:	2
 License:	LGPL v2.1+ (library), GPL v3+ (utilities)
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
@@ -146,6 +146,12 @@ domen).
 %patch1 -p1
 
 rm -f po/stamp-po
+
+# avoid different builds having different timestamps
+# see http://lists.pld-linux.org/mailman/pipermail/pld-devel-en/2008-August/020363.html
+d='$Date: 2008-08-27 23:03:46 $'
+d=${d#\$Date: 2008-08-27 23:03:46 ${d%%%% *}; d=$(date -d "$d" '+%d %B %Y')
+%{__sed} -i -e "s,@value{UPDATED},$d,g" doc/libidn.texi
 
 %build
 %{__gettextize}
