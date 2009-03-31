@@ -20,14 +20,15 @@
 Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
-Version:	1.12
-Release:	2
+Version:	1.13
+Release:	1
 License:	LGPL v2.1+ (library), GPL v3+ (utilities)
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
-# Source0-md5:	49db2165868d3ec2af00e0b7d0924dd8
+# Source0-md5:	101f13b1cb698080c77e38b8e8d4c6a4
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
+Patch2:		%{name}-pl.po-update.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake >= 1:1.10
@@ -144,12 +145,13 @@ domen).
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 rm -f po/stamp-po
 
 # avoid different builds having different timestamps
 # see http://lists.pld-linux.org/mailman/pipermail/pld-devel-en/2008-August/020363.html
-d='$Date: 2009-03-14 12:17:29 $'
+d='$Date: 2009-03-31 06:14:35 $'
 d=${d#?Date: }; d=${d%%%% *}; d=$(date -d "$d" '+%d %B %Y')
 %{__sed} -i -e "s,@value{UPDATED},$d,g" doc/libidn.texi
 
@@ -220,6 +222,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/stringprep.h
 %{_includedir}/tld.h
 %{_pkgconfigdir}/libidn.pc
+%{_mandir}/man3/idn_*.3*
 %{_mandir}/man3/idna_*.3*
 %{_mandir}/man3/pr29_*.3*
 %{_mandir}/man3/punycode_*.3*
