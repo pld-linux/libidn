@@ -35,13 +35,15 @@ BuildRequires:	automake >= 1:1.10
 %{?with_java:BuildRequires:	gcc-java}
 BuildRequires:	gettext-devel >= 0.17
 %{?with_java:BuildRequires:	gjdoc}
+BuildRequires:	help2man
 BuildRequires:	libtool >= 2:1.5
 %{?with_dotnet:BuildRequires:	mono}
 BuildRequires:	perl-base
+BuildRequires:	pkgconfig
 %{?with_python:BuildRequires:	python-devel >= 1:2.3}
+BuildRequires:	rpm >= 4.4.9-56
 %{?with_python:BuildRequires:	rpm-pythonprov}
 BuildRequires:	rpmbuild(macros) >= 1.384
-BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	texinfo >= 4.7
 Requires(post,postun):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -151,7 +153,7 @@ rm -f po/stamp-po
 
 # avoid different builds having different timestamps
 # see http://lists.pld-linux.org/mailman/pipermail/pld-devel-en/2008-August/020363.html
-d='$Date: 2010-03-25 07:41:18 $'
+d='$Date: 2010-05-13 17:16:27 $'
 d=${d#?Date: }; d=${d%%%% *}; d=$(date -d "$d" '+%d %B %Y')
 %{__sed} -i -e "s,@value{UPDATED},$d,g" doc/libidn.texi
 
@@ -247,7 +249,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with java}
 %files -n java-libidn
 %defattr(644,root,root,755)
-%{_datadir}/java/libidn*.jar
+%{_javadir}/libidn*.jar
 %endif
 
 %if %{with python}
