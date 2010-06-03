@@ -36,6 +36,7 @@ BuildRequires:	automake >= 1:1.10
 BuildRequires:	gettext-devel >= 0.17
 %{?with_java:BuildRequires:	gjdoc}
 BuildRequires:	help2man
+BuildRequires:	jdk
 BuildRequires:	libtool >= 2:1.5
 %{?with_dotnet:BuildRequires:	mono}
 BuildRequires:	perl-base
@@ -153,7 +154,7 @@ rm -f po/stamp-po
 
 # avoid different builds having different timestamps
 # see http://lists.pld-linux.org/mailman/pipermail/pld-devel-en/2008-August/020363.html
-d='$Date: 2010-05-24 18:43:26 $'
+d='$Date: 2010-06-03 01:10:37 $'
 d=${d#?Date: }; d=${d%%%% *}; d=$(date -d "$d" '+%d %B %Y')
 %{__sed} -i -e "s,@value{UPDATED},$d,g" doc/libidn.texi
 
