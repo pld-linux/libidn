@@ -1,5 +1,5 @@
---- libidn-1.20/po/pl.po.orig	2011-03-01 15:23:24.000000000 +0100
-+++ libidn-1.20/po/pl.po	2011-03-04 17:47:03.283409590 +0100
+--- libidn-1.21/po/pl.po.orig	2011-04-24 17:12:03.000000000 +0200
++++ libidn-1.21/po/pl.po	2011-04-26 17:46:27.790319304 +0200
 @@ -1,14 +1,14 @@
  # Polish translation for libidn.
  # Copyright (C) 2004, 2007, 2008 Free Software Foundation, Inc.
@@ -10,11 +10,11 @@
  msgid ""
  msgstr ""
 -"Project-Id-Version: libidn 1.9\n"
-+"Project-Id-Version: libidn 1.20\n"
++"Project-Id-Version: libidn 1.21\n"
  "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
- "POT-Creation-Date: 2011-03-01 15:23+0100\n"
+ "POT-Creation-Date: 2011-04-24 17:12+0200\n"
 -"PO-Revision-Date: 2008-07-02 22:10+0200\n"
-+"PO-Revision-Date: 2011-03-04 16:43+0100\n"
++"PO-Revision-Date: 2011-04-26 17:45+0200\n"
  "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
  "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
  "Language: pl\n"
