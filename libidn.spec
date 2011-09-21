@@ -39,6 +39,7 @@ BuildRequires:	help2man
 %{?with_java:BuildRequires:	jdk}
 BuildRequires:	libtool >= 2:1.5
 %{?with_dotnet:BuildRequires:	mono}
+%{?with_dotnet:BuildRequires:	mono-csharp}
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 %{?with_python:BuildRequires:	python-devel >= 1:2.3}
@@ -154,7 +155,7 @@ rm -f po/stamp-po
 
 # avoid different builds having different timestamps
 # see http://lists.pld-linux.org/mailman/pipermail/pld-devel-en/2008-August/020363.html
-d='$Date: 2011-05-06 15:16:25 $'
+d='$Date: 2011-09-21 08:16:34 $'
 d=${d#?Date: }; d=${d%%%% *}; d=$(date -d "$d" '+%d %B %Y')
 %{__sed} -i -e "s,@value{UPDATED},$d,g" doc/libidn.texi
 
