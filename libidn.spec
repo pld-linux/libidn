@@ -20,21 +20,21 @@
 Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
-Version:	1.22
+Version:	1.23
 Release:	1
 License:	LGPL v2.1+ (library), GPL v3+ (utilities)
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
-# Source0-md5:	893a1df0cf3b28b72d248382eaeaca71
+# Source0-md5:	f9a417270cc9b6bf763ae1f88e60191c
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
-Patch2:		%{name}-pl.po-update.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake >= 1:1.10
 %{?with_java:BuildRequires:	gcc-java}
 BuildRequires:	gettext-devel >= 0.18.1
 %{?with_java:BuildRequires:	gjdoc}
+BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	help2man
 %{?with_java:BuildRequires:	jdk}
 BuildRequires:	libtool >= 2:1.5
@@ -149,13 +149,12 @@ domen).
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
-rm -f po/stamp-po
+%{__rm} po/stamp-po
 
 # avoid different builds having different timestamps
 # see http://lists.pld-linux.org/mailman/pipermail/pld-devel-en/2008-August/020363.html
-d='$Date: 2011-09-21 08:16:34 $'
+d='$Date: 2011-11-28 18:04:48 $'
 d=${d#?Date: }; d=${d%%%% *}; d=$(date -d "$d" '+%d %B %Y')
 %{__sed} -i -e "s,@value{UPDATED},$d,g" doc/libidn.texi
 
@@ -168,6 +167,7 @@ d=${d#?Date: }; d=${d%%%% *}; d=$(date -d "$d" '+%d %B %Y')
 %{__automake}
 JAR=%{_bindir}/fastjar \
 %configure \
+	--disable-silent-rules \
 	%{?with_dotnet:--enable-csharp=mono}%{!?with_dotnet:--disable-csharp} \
 	%{?with_java:--enable-java} \
 	--with-lispdir=%{_emacs_lispdir}
