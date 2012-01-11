@@ -3,8 +3,8 @@
 #
 # Conditional build:
 %if "%{pld_release}" == "ac"
-%bcond_with		dotnet	# don't build C# binding
-%bcond_with		java	# don't build Java implementation
+%bcond_with	dotnet	# don't build C# binding
+%bcond_with	java	# don't build Java implementation
 %else
 %bcond_without	dotnet	# don't build C# binding
 %bcond_without	java	# don't build Java implementation
@@ -20,12 +20,12 @@
 Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
-Version:	1.23
+Version:	1.24
 Release:	1
-License:	LGPL v2.1+ (library), GPL v3+ (utilities)
+License:	GPL v2+ or LGPL v3+ (library), GPL v3+ (utilities)
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
-# Source0-md5:	f9a417270cc9b6bf763ae1f88e60191c
+# Source0-md5:	764d7258eeb273941680499fab2c7367
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
 URL:		http://www.gnu.org/software/libidn/
@@ -154,7 +154,7 @@ domen).
 
 # avoid different builds having different timestamps
 # see http://lists.pld-linux.org/mailman/pipermail/pld-devel-en/2008-August/020363.html
-d='$Date: 2011-11-28 18:04:48 $'
+d='$Date: 2012-01-11 20:19:08 $'
 d=${d#?Date: }; d=${d%%%% *}; d=$(date -d "$d" '+%d %B %Y')
 %{__sed} -i -e "s,@value{UPDATED},$d,g" doc/libidn.texi
 
