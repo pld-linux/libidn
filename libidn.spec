@@ -20,12 +20,12 @@
 Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
-Version:	1.24
+Version:	1.25
 Release:	1
 License:	GPL v2+ or LGPL v3+ (library), GPL v3+ (utilities)
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
-# Source0-md5:	764d7258eeb273941680499fab2c7367
+# Source0-md5:	45ffabce4b8ca87fe98fe4542668d33d
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
 URL:		http://www.gnu.org/software/libidn/
@@ -154,9 +154,13 @@ domen).
 
 # avoid different builds having different timestamps
 # see http://lists.pld-linux.org/mailman/pipermail/pld-devel-en/2008-August/020363.html
-d='$Date: 2012-01-11 20:19:08 $'
+d='$Date: 2012-05-24 11:40:06 $'
 d=${d#?Date: }; d=${d%%%% *}; d=$(date -d "$d" '+%d %B %Y')
 %{__sed} -i -e "s,@value{UPDATED},$d,g" doc/libidn.texi
+
+# remove it when "linking libtool libraries using a non-POSIX archiver ..." warning is gone
+# (after libidn or libtool change)
+%{__sed} -i -e '/AM_INIT_AUTOMAKE/s/-Werror//' configure.ac
 
 %build
 %{__gettextize}
