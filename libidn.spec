@@ -21,7 +21,7 @@ Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
 Version:	1.29
-Release:	1
+Release:	2
 License:	GPL v2+ or LGPL v3+ (library), GPL v3+ (utilities)
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
