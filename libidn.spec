@@ -20,24 +20,24 @@
 Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
-Version:	1.29
-Release:	2
+Version:	1.30
+Release:	1
 License:	GPL v2+ or LGPL v3+ (library), GPL v3+ (utilities)
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
-# Source0-md5:	2b67bb507207af379f9461e1307dc84b
+# Source0-md5:	b17edc8551cd31cc5f14c82a9dabf58e
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake >= 1:1.10
 %{?with_java:BuildRequires:	gcc-java}
-BuildRequires:	gettext-tools >= 0.18.1
+BuildRequires:	gettext-tools >= 0.19.3
 %{?with_java:BuildRequires:	gjdoc}
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	help2man
 %{?with_java:BuildRequires:	jdk}
-BuildRequires:	libtool >= 2:1.5
+BuildRequires:	libtool >= 2:2
 %{?with_dotnet:BuildRequires:	mono}
 %{?with_dotnet:BuildRequires:	mono-csharp}
 BuildRequires:	perl-base
