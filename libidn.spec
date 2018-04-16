@@ -1,5 +1,5 @@
 # TODO:
-# - prepare package with web-files and java from contrib
+# - prepare package with web-files from contrib and JNI (contrib/java, needs move to jdk)
 #
 # Conditional build:
 %if "%{pld_release}" == "ac"
@@ -11,7 +11,7 @@
 %endif
 %bcond_without	python	# don't build python interface
 #
-%ifnarch %{ix86} %{x8664} alpha arm hppa ppc s390 s390x sparc sparcv9 sparc64
+%ifnarch %{ix86} %{x8664} alpha %{arm} hppa ppc s390 s390x sparc sparcv9 sparc64
 %undefine	with_dotnet
 %endif
 %ifarch i386
@@ -21,7 +21,7 @@ Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
 Version:	1.34
-Release:	1
+Release:	2
 License:	GPL v2+ or LGPL v3+ (library), GPL v3+ (utilities)
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
@@ -31,7 +31,6 @@ Patch1:		%{name}-python.patch
 URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake >= 1:1.10
-%{?with_java:BuildRequires:	gcc-java}
 BuildRequires:	gettext-tools >= 0.19.3
 %{?with_java:BuildRequires:	gjdoc}
 BuildRequires:	gtk-doc >= 1.1
@@ -181,7 +180,7 @@ JAR=%{_bindir}/fastjar \
 %if %{with python}
 %{__make} -C contrib/idn-python \
 	INCLUDE="%{py_incdir} %{rpmcflags} -I../../lib -L../../lib/.libs"
-mv contrib/idn-python/idn.so python-idn.so
+%{__mv} contrib/idn-python/idn.so python-idn.so
 %endif
 
 %install
@@ -211,7 +210,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog FAQ NEWS README* THANKS TODO doc/libidn.html contrib
+%doc AUTHORS ChangeLog FAQ NEWS README* THANKS TODO doc/libidn.html contrib/web
 %attr(755,root,root) %{_bindir}/idn
 %attr(755,root,root) %{_libdir}/libidn.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libidn.so.11
