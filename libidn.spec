@@ -20,12 +20,12 @@
 Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
-Version:	1.34
-Release:	2
+Version:	1.35
+Release:	1
 License:	GPL v2+ or LGPL v3+ (library), GPL v3+ (utilities)
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
-# Source0-md5:	a829db6cd0b85733017c20a50bf10798
+# Source0-md5:	bef634141fe39326cb354b75e891fead
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
 URL:		http://www.gnu.org/software/libidn/
@@ -168,7 +168,6 @@ d=${d#?Date: }; d=${d%%%% *}; d=$(date -d "$d" '+%d %B %Y')
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-JAR=%{_bindir}/fastjar \
 %configure \
 	--disable-silent-rules \
 	%{?with_dotnet:--enable-csharp=mono}%{!?with_dotnet:--disable-csharp} \
@@ -213,7 +212,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog FAQ NEWS README* THANKS TODO doc/libidn.html contrib/web
 %attr(755,root,root) %{_bindir}/idn
 %attr(755,root,root) %{_libdir}/libidn.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libidn.so.11
+%attr(755,root,root) %ghost %{_libdir}/libidn.so.12
 %{_mandir}/man1/idn.1*
 %{_infodir}/libidn.info*
 %{_infodir}/libidn-*.png
