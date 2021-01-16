@@ -32,7 +32,6 @@ URL:		http://www.gnu.org/software/libidn/
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake >= 1:1.10
 BuildRequires:	gettext-tools >= 0.19.3
-%{?with_java:BuildRequires:	gjdoc}
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	help2man
 %{?with_java:BuildRequires:	jdk}
