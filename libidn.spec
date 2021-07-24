@@ -20,12 +20,12 @@
 Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
-Version:	1.37
+Version:	1.38
 Release:	1
 License:	GPL v2+ or LGPL v3+ (library), GPL v3+ (utilities)
 Group:		Libraries
 Source0:	https://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
-# Source0-md5:	c317142af1e71cb363ca496957e1d5d5
+# Source0-md5:	718ff3700dd71f830c592ebe97249193
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
 URL:		http://www.gnu.org/software/libidn/
