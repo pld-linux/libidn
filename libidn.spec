@@ -20,12 +20,12 @@
 Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
-Version:	1.38
+Version:	1.40
 Release:	1
 License:	GPL v2+ or LGPL v3+ (library), GPL v3+ (utilities)
 Group:		Libraries
 Source0:	https://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
-# Source0-md5:	718ff3700dd71f830c592ebe97249193
+# Source0-md5:	3bdf267007fedccc02df7d3ef2a488c0
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
 URL:		http://www.gnu.org/software/libidn/
@@ -159,9 +159,6 @@ d=${d#?Date: }; d=${d%%%% *}; d=$(date -d "$d" '+%d %B %Y')
 # remove it when "linking libtool libraries using a non-POSIX archiver ..." warning is gone
 # (after libidn or libtool change)
 %{__sed} -i -e '/AM_INIT_AUTOMAKE/s/-Werror//' configure.ac
-
-# rebuild from sources
-%{__rm} java/libidn-%{version}.jar
 
 %build
 %{__gettextize}
