@@ -18,6 +18,9 @@
 %ifarch i386
 %undefine	with_dotnet
 %endif
+
+%{?with_java:%{?use_default_jdk}}
+
 Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
@@ -35,7 +38,7 @@ BuildRequires:	automake >= 1:1.10
 BuildRequires:	gettext-tools >= 0.21
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	help2man
-%{?with_java:BuildRequires:	jdk}
+%{?with_java:%buildrequires_jdk}
 BuildRequires:	libtool >= 2:2
 %{?with_dotnet:BuildRequires:	mono}
 %{?with_dotnet:BuildRequires:	mono-csharp}
@@ -43,8 +46,9 @@ BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 %{?with_python:BuildRequires:	python-devel >= 1:2.3}
 BuildRequires:	rpm >= 4.4.9-56
+%{?with_java:BuildRequires:	rpm-javaprov}
 %{?with_python:BuildRequires:	rpm-pythonprov}
-BuildRequires:	rpmbuild(macros) >= 1.527
+BuildRequires:	rpmbuild(macros) >= 2.021
 BuildRequires:	texinfo >= 4.7
 Requires(post,postun):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -172,8 +176,14 @@ d=${d#?Date: }; d=${d%%%% *}; d=$(date -d "$d" '+%d %B %Y')
 	--disable-silent-rules \
 	%{__enable_disable static_libs static} \
 	%{?with_dotnet:--enable-csharp=mono}%{!?with_dotnet:--disable-csharp} \
-	%{?with_java:--enable-java} \
-	--with-lispdir=%{_emacs_lispdir}
+	--with-lispdir=%{_emacs_lispdir} \
+%if %{with java}
+	JAR="%{java_home}/bin/jar" \
+	JAVAC="%{java_home}/bin/javac" \
+	JAVADOC="%{java_home}/bin/javadoc" \
+	--enable-java \
+	--with-java-prefix="%{java_home}"
+%endif
 
 %{__make}
 
