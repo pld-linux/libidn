@@ -3,13 +3,14 @@
 #
 # Conditional build:
 %if "%{pld_release}" == "ac"
-%bcond_with	dotnet	# don't build C# binding
-%bcond_with	java	# don't build Java implementation
+%bcond_with	dotnet		# don't build C# binding
+%bcond_with	java		# don't build Java implementation
 %else
-%bcond_without	dotnet	# don't build C# binding
-%bcond_without	java	# don't build Java implementation
+%bcond_without	dotnet		# don't build C# binding
+%bcond_without	java		# don't build Java implementation
 %endif
-%bcond_without	python	# don't build python interface
+%bcond_without	python		# don't build python interface
+%bcond_without	static_libs	# static library
 #
 %ifnarch %{ix86} %{x8664} alpha %{arm} hppa ppc s390 s390x sparc sparcv9 sparc64
 %undefine	with_dotnet
@@ -43,7 +44,7 @@ BuildRequires:	pkgconfig
 %{?with_python:BuildRequires:	python-devel >= 1:2.3}
 BuildRequires:	rpm >= 4.4.9-56
 %{?with_python:BuildRequires:	rpm-pythonprov}
-BuildRequires:	rpmbuild(macros) >= 1.384
+BuildRequires:	rpmbuild(macros) >= 1.527
 BuildRequires:	texinfo >= 4.7
 Requires(post,postun):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -169,6 +170,7 @@ d=${d#?Date: }; d=${d%%%% *}; d=$(date -d "$d" '+%d %B %Y')
 %{__automake}
 %configure \
 	--disable-silent-rules \
+	%{__enable_disable static_libs static} \
 	%{?with_dotnet:--enable-csharp=mono}%{!?with_dotnet:--disable-csharp} \
 	%{?with_java:--enable-java} \
 	--with-lispdir=%{_emacs_lispdir}
@@ -234,9 +236,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/stringprep*.3*
 %{_mandir}/man3/tld_*.3*
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libidn.a
+%endif
 
 %if %{with dotnet}
 %files -n dotnet-libidn
