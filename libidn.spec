@@ -24,12 +24,12 @@
 Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
-Version:	1.42
+Version:	1.43
 Release:	1
 License:	GPL v2+ or LGPL v3+ (library), GPL v3+ (utilities)
 Group:		Libraries
 Source0:	https://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
-# Source0-md5:	fe061a95ae23979150a692d102dce4ad
+# Source0-md5:	4a32cafa4e9de86943fbae9a75c41f01
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-python.patch
 URL:		http://www.gnu.org/software/libidn/
@@ -46,6 +46,7 @@ BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 %{?with_python:BuildRequires:	python-devel >= 1:2.3}
 BuildRequires:	rpm >= 4.4.9-56
+BuildRequires:	rpm-build >= 4.6
 %{?with_java:BuildRequires:	rpm-javaprov}
 %{?with_python:BuildRequires:	rpm-pythonprov}
 BuildRequires:	rpmbuild(macros) >= 2.021
@@ -91,6 +92,18 @@ Static libidn library.
 
 %description static -l pl.UTF-8
 Statyczna biblioteka libidn.
+
+%package apidocs
+Summary:	API documentation for libidn library
+Summary(pl.UTF-8):	Dokumentacja API biblioteki libidn
+Group:		Documentation
+BuildArch:	noarch
+
+%description apidocs
+API documentation for libidn library.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API biblioteki libidn.
 
 %package -n dotnet-libidn
 Summary:	C# binding for libidn
@@ -220,7 +233,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog FAQ NEWS README* THANKS doc/libidn-components.pdf contrib/web
+%doc AUTHORS ChangeLog FAQ NEWS README* THANKS contrib/web
 %attr(755,root,root) %{_bindir}/idn
 %attr(755,root,root) %{_libdir}/libidn.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libidn.so.12
@@ -251,6 +264,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libidn.a
 %endif
+
+%files apidocs
+%defattr(644,root,root,755)
+%doc doc/reference/html/*
 
 %if %{with dotnet}
 %files -n dotnet-libidn
