@@ -72,7 +72,7 @@ Summary:	Header files for libidn library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libidn
 License:	LGPL v2.1+
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description devel
 Header files for libidn library.
@@ -85,7 +85,7 @@ Summary:	Static libidn library
 Summary(pl.UTF-8):	Statyczna biblioteka libidn
 License:	LGPL v2.1+
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-devel%{?_isa} = %{version}-%{release}
 
 %description static
 Static libidn library.
@@ -110,7 +110,7 @@ Summary:	C# binding for libidn
 Summary(pl.UTF-8):	Wiązanie C# dla libidn
 License:	LGPL v2.1+
 Group:		Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description -n dotnet-libidn
 C# binding for libidn.
@@ -151,7 +151,7 @@ Summary:	Python interface to libidn
 Summary(pl.UTF-8):	Pythonowy interfejs do libidn
 License:	LGPL v2.1+
 Group:		Libraries/Python
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 %pyrequires_eq	python-libs
 
 %description -n python-idn
