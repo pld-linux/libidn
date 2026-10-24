@@ -25,7 +25,7 @@ Summary:	Internationalized string processing library
 Summary(pl.UTF-8):	Biblioteka do przetwarzania umiędzynarodowionych łańcuchów
 Name:		libidn
 Version:	1.44
-Release:	1
+Release:	2
 License:	GPL v2+ or LGPL v3+ (library), GPL v3+ (utilities)
 Group:		Libraries
 Source0:	https://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
@@ -123,7 +123,7 @@ Summary:	IDN support files for emacs
 Summary(pl.UTF-8):	Obsługa IDN dla emacsa
 License:	GPL v3+
 Group:		Applications/Editors/Emacs
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description -n emacs-libidn-pkg
 IDN support files for emacs.
